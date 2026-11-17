@@ -1,24 +1,94 @@
-body { font-family: Georgia, serif; max-width: 1400px; margin: 0 auto; padding: 1.5rem 2rem; line-height: 1.6; color: #222; font-size: 1.05rem; }
+/* Fonts (hosted on this site, SIL Open Font License) */
+@font-face { font-family: 'Cormorant Garamond'; font-weight: 400; font-style: normal; font-display: swap; src: url('fonts/cormorant-garamond-latin-400-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Cormorant Garamond'; font-weight: 500; font-style: normal; font-display: swap; src: url('fonts/cormorant-garamond-latin-500-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Cormorant Garamond'; font-weight: 600; font-style: normal; font-display: swap; src: url('fonts/cormorant-garamond-latin-600-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Cormorant Garamond'; font-weight: 700; font-style: normal; font-display: swap; src: url('fonts/cormorant-garamond-latin-700-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Space Mono'; font-weight: 400; font-style: normal; font-display: swap; src: url('fonts/space-mono-latin-400-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Space Mono'; font-weight: 700; font-style: normal; font-display: swap; src: url('fonts/space-mono-latin-700-normal.woff2') format('woff2'); }
 
-header { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 0.5rem 2rem; padding-bottom: 1rem; border-bottom: 1px solid #ddd; margin-bottom: 2rem; }
-.name { font-size: 1.5rem; font-weight: bold; text-decoration: none; color: #222; }
-nav { display: flex; flex-wrap: wrap; gap: 0.3rem 1.6rem; }
-nav a { text-decoration: none; color: #555; padding: 0.2rem 0; border-bottom: 2px solid transparent; }
-nav a:hover { color: #000; }
-nav a.active { color: #000; font-weight: bold; border-bottom-color: #222; }
+/* Colours: change these to restyle the whole site */
+:root {
+  --frame: #3a1f10;
+  --paper: #f8f4ee;
+  --ink: #1f1a16;
+  --muted: #7b6b5e;
+  --line: #d9cfc3;
+  --accent: #5a2d0c;
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --mono: 'Space Mono', 'Courier New', monospace;
+  --side: 6vw;
+}
 
-h1 { margin-top: 0; }
-h2 { margin-top: 2.5rem; padding-bottom: 0.3rem; border-bottom: 1px solid #ddd; font-size: 1.35rem; text-transform: uppercase; letter-spacing: 0.04em; }
-h3 { margin: 1.6rem 0 0.1rem; font-size: 1.1rem; }
-h3 + p { margin-top: 0; margin-bottom: 0.4rem; color: #666; font-size: 0.95rem; font-style: italic; }
-ul { margin-top: 0.3rem; padding-left: 1.3rem; }
-li { margin-bottom: 0.25rem; }
+* { box-sizing: border-box; }
+html { background: var(--frame); }
+body {
+  margin: 14px;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  line-height: 1.5;
+  min-height: calc(100vh - 28px);
+}
 
-a { color: #1a4d8f; }
-.back { font-size: 0.9rem; margin-top: 0; }
-footer { margin-top: 4rem; padding-top: 1rem; border-top: 1px solid #ddd; color: #777; font-size: 0.9rem; }
+a { color: var(--accent); text-underline-offset: 3px; }
+a:hover { color: #000; }
 
-@media (max-width: 700px) {
-  body { padding: 1rem; }
-  header { flex-direction: column; }
+/* Header */
+.site-header { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 0.6rem 2rem; padding: 1.8rem var(--side); }
+.logo { font-family: var(--serif); font-weight: 700; font-size: 1.15rem; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; color: var(--ink); }
+.site-header nav { display: flex; flex-wrap: wrap; gap: 0.4rem 1.8rem; }
+.site-header nav a { font-family: var(--mono); font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; color: var(--muted); padding: 0.2rem 0; border-bottom: 1px solid transparent; }
+.site-header nav a:hover { color: var(--ink); }
+.site-header nav a.active { color: var(--ink); border-bottom-color: var(--ink); }
+
+/* Hero (home page) */
+.hero { display: grid; grid-template-columns: 1.05fr 0.95fr; min-height: 78vh; align-items: stretch; }
+.hero-text { padding: 2rem 3vw 3rem var(--side); align-self: center; }
+.hero h1 { font-weight: 600; font-size: clamp(2.4rem, 5vw, 4.2rem); line-height: 1.05; letter-spacing: 0.03em; text-transform: uppercase; margin: 0 0 1.6rem; }
+.intro { font-family: var(--mono); font-size: 0.9rem; line-height: 1.85; max-width: 34rem; margin: 0 0 2rem; }
+
+.brush-button { display: inline-block; font-family: var(--mono); font-size: 0.8rem; color: var(--paper); background: #1b1613; padding: 0.6rem 1.3rem; text-decoration: none; border-radius: 3px 14px 4px 11px / 11px 4px 13px 3px; transform: rotate(-0.6deg); }
+.brush-button:hover { background: var(--accent); color: var(--paper); }
+
+.highlights { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.6rem; margin-top: 3.5rem; max-width: 46rem; }
+.highlights h2 { font-family: var(--serif); font-weight: 700; font-size: 0.95rem; letter-spacing: 0.1em; text-transform: uppercase; margin: 0 0 0.4rem; padding: 0; border: none; }
+.highlights p { font-size: 1rem; line-height: 1.35; margin: 0; color: #3b322a; }
+
+.hero-image { position: relative; overflow: hidden; }
+.hero-image img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 22%);
+          mask-image: linear-gradient(to right, transparent 0%, #000 22%); }
+
+/* CV */
+.cv { padding: 3rem var(--side) 2rem; max-width: 1100px; }
+.cv h1 { display: none; }
+.cv h2, .page-content h2 { font-family: var(--serif); font-weight: 600; font-size: 1.5rem; letter-spacing: 0.08em; text-transform: uppercase; margin: 3rem 0 0.8rem; padding-bottom: 0.4rem; border-bottom: 1px solid var(--line); }
+.cv h2:first-child { margin-top: 0; }
+.cv h3, .page-content h3 { font-weight: 700; font-size: 1.3rem; line-height: 1.25; margin: 1.8rem 0 0.15rem; }
+.cv h3 + p, .page-content h3 + p { font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.04em; color: var(--muted); margin: 0 0 0.5rem; }
+.cv h3 + p em, .page-content h3 + p em { font-style: normal; }
+.cv ul, .page-content ul { margin: 0.3rem 0 0; padding-left: 1.2rem; }
+.cv li, .page-content li { margin-bottom: 0.3rem; }
+.cv p, .page-content p { margin: 0.6rem 0; }
+
+/* Inner pages */
+.page-content { padding: 1rem var(--side) 2rem; max-width: 1100px; }
+.page-content h1 { font-weight: 600; font-size: clamp(2rem, 4vw, 3rem); letter-spacing: 0.04em; text-transform: uppercase; margin: 0.4rem 0 1.2rem; }
+.back { font-family: var(--mono); font-size: 0.75rem; margin: 0; }
+.back a { color: var(--muted); text-decoration: none; }
+.back a:hover { color: var(--ink); }
+
+.site-footer { padding: 2rem var(--side) 2.5rem; font-family: var(--mono); font-size: 0.72rem; color: var(--muted); border-top: 1px solid var(--line); margin: 3rem var(--side) 0; padding-left: 0; padding-right: 0; }
+
+/* Phones and narrow windows */
+@media (max-width: 800px) {
+  body { margin: 8px; font-size: 1.2rem; min-height: calc(100vh - 16px); }
+  :root { --side: 1.4rem; }
+  .site-header { flex-direction: column; padding-top: 1.4rem; }
+  .hero { grid-template-columns: 1fr; min-height: 0; }
+  .hero-text { padding-right: var(--side); }
+  .hero-image { height: 55vw; order: -1; }
+  .hero-image img { -webkit-mask-image: linear-gradient(to bottom, #000 70%, transparent); mask-image: linear-gradient(to bottom, #000 70%, transparent); }
+  .highlights { grid-template-columns: 1fr; gap: 1.2rem; }
 }

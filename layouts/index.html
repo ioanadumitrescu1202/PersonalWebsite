@@ -1,3 +1,24 @@
 {{ define "main" }}
+<section class="hero">
+  <div class="hero-text">
+    <h1>{{ .Params.heading }}</h1>
+    <p class="intro">{{ .Params.intro }}</p>
+    <a class="brush-button" href="#cv">{{ .Params.button | default "view my cv" }}</a>
+    <div class="highlights">
+      {{ range .Params.highlights }}
+        <div>
+          <h2>{{ .title }}</h2>
+          <p>{{ .text }}</p>
+        </div>
+      {{ end }}
+    </div>
+  </div>
+  <div class="hero-image">
+    <img src="{{ .Params.image | relURL }}" alt="{{ .Params.image_alt }}">
+  </div>
+</section>
+
+<section class="cv" id="cv">
   {{ .Content }}
+</section>
 {{ end }}

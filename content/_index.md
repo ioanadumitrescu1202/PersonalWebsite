@@ -1,10 +1,18 @@
 ---
 title: "Home"
+heading: "Ioana Dumitrescu"
+intro: "Art historian and curator based in Zürich. I work with exhibitions, archives and cultural projects, from museum research to exhibition planning."
+button: "view my cv"
+image: "images/portrait-placeholder.svg"
+image_alt: ""
+highlights:
+  - title: "Exhibitions"
+    text: "Curatorial work and exhibition planning in Bucharest, Rome and Zürich."
+  - title: "Archives"
+    text: "Research and cataloguing at the Warburg Institute and the Museo delle Civiltà."
+  - title: "Projects"
+    text: "Exhibition design, and a jobs publication for the Swiss arts sector."
 ---
-
-# Ioana Dumitrescu
-
-Art historian and curator based in Zürich, Switzerland.
 
 ## Professional profile
 
