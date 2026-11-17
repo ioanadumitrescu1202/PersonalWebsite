@@ -1,5 +1,6 @@
 ---
 title: "Contact"
+draft: true
 ---
 
-You can reach me at your-email@example.com.
+Not in use.

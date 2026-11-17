@@ -1,18 +1,4 @@
-baseURL = 'https://personalwebsite.pages.dev/'
+baseURL = 'https://ioanadumitrescu1202.github.io/PersonalWebsite/'
 languageCode = 'en'
 title = 'Ioana Dumitrescu'
-
-[[menus.main]]
-name = 'Home'
-pageRef = '/'
-weight = 10
-
-[[menus.main]]
-name = 'About'
-pageRef = '/about'
-weight = 20
-
-[[menus.main]]
-name = 'Contact'
-pageRef = '/contact'
-weight = 30
+disableKinds = ['taxonomy', 'term', 'rss']
