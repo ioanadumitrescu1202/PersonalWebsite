@@ -9,20 +9,16 @@
 <body>
   <header>
     <a class="name" href="{{ "/" | relURL }}">{{ site.Title }}</a>
+    <nav>
+      {{ $current := . }}
+      {{ range site.Menus.main }}
+        <a href="{{ .URL }}"{{ if eq $current.RelPermalink .URL }} class="active"{{ end }}>{{ .Name }}</a>
+      {{ end }}
+    </nav>
   </header>
-  <div class="layout">
-    <main>
-      {{ block "main" . }}{{ end }}
-    </main>
-    <aside>
-      <nav>
-        {{ $current := . }}
-        {{ range site.Menus.main }}
-          <a href="{{ .URL }}"{{ if eq $current.RelPermalink .URL }} class="active"{{ end }}>{{ .Name }}</a>
-        {{ end }}
-      </nav>
-    </aside>
-  </div>
+  <main>
+    {{ block "main" . }}{{ end }}
+  </main>
   <footer>© {{ now.Year }} {{ site.Title }}</footer>
 </body>
 </html>
