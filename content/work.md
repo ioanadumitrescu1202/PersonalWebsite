@@ -1,13 +1,11 @@
 ---
 title: "Work"
-menu:
-  main:
-    weight: 30
+draft: true
 ---
 
 A short overview of where I have worked. Full details of each role are in the CV on the [main page](../#work-experience).
 
-- **Founder & Product Developer**, [RFA Exhibition Design Support](https://roomforart.ch), 2026 to present
+- **Founder & Product Developer**, Stealth project, 2026 to present
 - **Freelance Museum Guide**, Concierge Services, 2026
 - **Founder & Project Lead**, Arts and Culture Jobs Dispatch, 2026 to present
 - **Team Assistant** and **Volunteer**, [Zurich Art Weekend](https://zurichartweekend.com), 2024 and 2025

@@ -4,12 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} | {{ site.Title }}{{ end }}</title>
-  <link rel="preload" href="{{ "fonts/cormorant-garamond-latin-600-normal.woff2" | relURL }}" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="{{ "fonts/cormorant-garamond-latin-500-normal.woff2" | relURL }}" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="{{ "style.css" | relURL }}">
 </head>
 <body class="{{ if .IsHome }}home{{ else }}inner{{ end }}">
   <header class="site-header">
-    <a class="logo" href="{{ "/" | relURL }}">{{ site.Title }}</a>
     <nav>
       {{ $current := . }}
       {{ range site.Menus.main }}
@@ -18,6 +17,6 @@
     </nav>
   </header>
   {{ block "main" . }}{{ end }}
-  <footer class="site-footer">© {{ now.Year }} {{ site.Title }}</footer>
+  <footer class="site-footer">© {{ now.Year }} {{ site.Title }} · Zürich</footer>
 </body>
 </html>

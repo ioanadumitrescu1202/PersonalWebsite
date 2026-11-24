@@ -2,3 +2,7 @@ baseURL = 'https://ioanadumitrescu1202.github.io/PersonalWebsite/'
 languageCode = 'en'
 title = 'Ioana Dumitrescu'
 disableKinds = ['taxonomy', 'term', 'rss']
+
+[params]
+  # Web3Forms access key: sends contact-form messages to your inbox (see web3forms.com)
+  formKey = 'YOUR_ACCESS_KEY'

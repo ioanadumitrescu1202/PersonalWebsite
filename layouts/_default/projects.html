@@ -1,0 +1,127 @@
+{{ define "main" }}
+<main class="page-content projects-page">
+  <p class="back"><a href="{{ "/" | relURL }}">← Back to main page</a></p>
+  <h1>{{ .Title }}</h1>
+  <div class="path-wrap">
+  <ol class="path">
+    {{ range $i, $p := .Params.projects }}
+    <li class="step">
+      <span class="num" aria-hidden="true"></span>
+      {{ with $p.status }}<span class="badge badge-{{ . | urlize }}">{{ . }}</span>{{ end }}
+      <div class="step-text">
+        <h2>{{ $p.title }}</h2>
+        <small>{{ $p.meta }}</small>
+        <p>{{ $p.text }}</p>
+        {{ if $p.url }}<a href="{{ $p.url }}">{{ $p.link_label | default "Visit" }} →</a>{{ end }}
+      </div>
+    </li>
+    {{ end }}
+  </ol>
+  </div>
+
+  {{ .Content }}
+</main>
+
+<script>
+(function () {
+  var wrap = document.querySelector('.path-wrap');
+  var path = wrap && wrap.querySelector('.path');
+  if (!path) return;
+  var steps = Array.prototype.slice.call(path.querySelectorAll('.step'));
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var narrow = window.matchMedia('(max-width: 860px)');
+  var NS = 'http://www.w3.org/2000/svg';
+  var svg, line, dots = [], reveals = [], total = 0, progress = 0, started = false, done = false;
+
+  function build() {
+    if (svg) svg.remove();
+    dots = []; reveals = [];
+    var c = wrap.getBoundingClientRect();
+    var g = steps.map(function (s) {
+      var r = s.getBoundingClientRect();
+      return { L: r.left - c.left, R: r.right - c.left, T: r.top - c.top + 0.5, B: r.bottom - c.top - 0.5 };
+    });
+    var n = g.length, d = '', len = 0, x = 0, y = 0;
+    function M(px, py) { d += 'M ' + px + ' ' + py; x = px; y = py; }
+    function Lt(px, py) { len += Math.hypot(px - x, py - y); d += ' L ' + px + ' ' + py; x = px; y = py; }
+    function A(r, sweep, px, py) { len += Math.PI * r; d += ' A ' + r + ' ' + r + ' 0 0 ' + sweep + ' ' + px + ' ' + py; x = px; y = py; }
+    for (var i = n - 1; i >= 0; i--) {
+      var s = g[i], r = (s.B - s.T) / 2;
+      if (i % 2 === 0) {                       // curves on the left
+        if (i === n - 1) { M(s.R, s.B); Lt(s.L + r, s.B); }
+        reveals[i] = len + Math.PI * r / 2;
+        A(r, 1, s.L + r, s.T);
+        if (i === 0) {
+          dots.push({ x: s.L + 0.8 * (s.R - s.L), y: s.T, at: len + (s.L + 0.8 * (s.R - s.L)) - (s.L + r) });
+          Lt(s.R, s.T);
+        } else {
+          var u = g[i - 1], ur = (u.B - u.T) / 2;
+          dots.push({ x: s.R, y: s.T, at: len + (s.R - (s.L + r)) });
+          Lt(u.R - ur, s.T);
+        }
+      } else {                                 // curves on the right
+        if (i === n - 1) { M(s.L, s.B); Lt(s.R - r, s.B); }
+        reveals[i] = len + Math.PI * r / 2;
+        A(r, 0, s.R - r, s.T);
+        dots.push({ x: s.L, y: s.T, at: len + (s.R - r - s.L) });
+        if (i === 0) { Lt(s.L, s.T); }
+        else { var v = g[i - 1], vr = (v.B - v.T) / 2; Lt(v.L + vr, s.T); }
+      }
+    }
+    total = len;
+    svg = document.createElementNS(NS, 'svg');
+    svg.setAttribute('class', 'path-svg');
+    svg.setAttribute('width', c.width); svg.setAttribute('height', c.height);
+    line = document.createElementNS(NS, 'path');
+    line.setAttribute('d', d);
+    line.setAttribute('class', 'path-line');
+    line.style.strokeDasharray = total;
+    svg.appendChild(line);
+    dots.forEach(function (p) {
+      var el = document.createElementNS(NS, 'circle');
+      el.setAttribute('cx', p.x); el.setAttribute('cy', p.y); el.setAttribute('r', 4.5);
+      el.setAttribute('class', 'path-dot');
+      p.el = el; svg.appendChild(el);
+    });
+    wrap.appendChild(svg);
+    render();
+  }
+
+  function render() {
+    if (!svg) return;
+    var drawn = progress * total;
+    line.style.strokeDashoffset = total - drawn;
+    dots.forEach(function (p) { p.el.style.opacity = drawn >= p.at ? 1 : 0; });
+    steps.forEach(function (s, i) { if (drawn >= reveals[i]) s.classList.add('in'); });
+  }
+
+  function run() {
+    if (started) return; started = true;
+    if (reduce) { progress = 1; done = true; render(); return; }
+    var dur = Math.min(Math.max(total / 650, 3), 6) * 1000, t0 = null;
+    function frame(t) {
+      if (t0 === null) t0 = t;
+      progress = Math.min((t - t0) / dur, 1);
+      render();
+      if (progress < 1) requestAnimationFrame(frame); else done = true;
+    }
+    requestAnimationFrame(frame);
+  }
+
+  function setup() {
+    if (narrow.matches) { path.classList.remove('enhanced'); if (svg) { svg.remove(); svg = null; } steps.forEach(function (s) { s.classList.add('in'); }); return; }
+    path.classList.add('enhanced');
+    if (done) progress = 1;
+    build();
+  }
+
+  setup();
+  var resizeTimer;
+  window.addEventListener('resize', function () { clearTimeout(resizeTimer); resizeTimer = setTimeout(setup, 150); });
+  if (narrow.matches) return;
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (e, o) { if (e[0].isIntersecting) { o.disconnect(); run(); } }, { threshold: 0.2 }).observe(path);
+  } else { run(); }
+})();
+</script>
+{{ end }}

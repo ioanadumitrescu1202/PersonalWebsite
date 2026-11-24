@@ -1,24 +1,59 @@
 {{ define "main" }}
 <section class="hero">
-  <div class="hero-text">
+  <div class="hero-inner">
+    <p class="kicker">{{ .Params.kicker }}</p>
     <h1>{{ .Params.heading }}</h1>
     <p class="intro">{{ .Params.intro }}</p>
-    <a class="brush-button" href="#cv">{{ .Params.button | default "view my cv" }}</a>
-    <div class="highlights">
-      {{ range .Params.highlights }}
-        <div>
-          <h2>{{ .title }}</h2>
-          <p>{{ .text }}</p>
-        </div>
-      {{ end }}
-    </div>
-  </div>
-  <div class="hero-image">
-    <img src="{{ .Params.image | relURL }}" alt="{{ .Params.image_alt }}">
   </div>
 </section>
 
-<section class="cv" id="cv">
-  {{ .Content }}
+<section class="host">
+  <div class="host-photo">
+    <div class="portrait frame-slot arch" role="img" aria-label="Portrait placeholder"></div>
+  </div>
+  <div class="host-text">
+    <h2>{{ .Params.about_title }}</h2>
+    <p>{{ .Params.about_one }}</p>
+    <p>{{ .Params.about_two }}</p>
+    <a class="outline-button" href="{{ "about/" | relURL }}">Read more</a>
+  </div>
 </section>
+
+<section class="projects">
+  <div class="projects-head">
+    <h2>{{ .Params.projects_title }}</h2>
+    <p>{{ .Params.projects_text }}</p>
+    <a class="outline-button" href="{{ "projects/" | relURL }}">{{ .Params.projects_button }}</a>
+  </div>
+  <ul class="project-list">
+    {{ range (site.GetPage "projects").Params.projects }}
+      {{ if not .hide_home }}<li>
+        <small>{{ .meta }}</small>
+        <h3>{{ .title }}</h3>
+        <p>{{ .text }}</p>
+        {{ if .url }}<a href="{{ .url }}">{{ .link_label | default "Visit" }} →</a>{{ end }}
+      </li>{{ end }}
+    {{ end }}
+  </ul>
+</section>
+
+<section class="socials">
+  <div class="socials-head">
+    <h2>{{ .Params.socials_title }}</h2>
+    <p>{{ .Params.socials_text }}</p>
+  </div>
+  <ul class="social-list">
+    {{ range .Params.socials }}
+    <li>
+      {{ if .url }}<a class="social-card" href="{{ .url }}" target="_blank" rel="noopener">{{ else }}<span class="social-card is-pending">{{ end }}
+        <small>{{ .name }}</small>
+        <strong>{{ .handle }}</strong>
+        <span class="social-text">{{ .text }}</span>
+        <i aria-hidden="true">→</i>
+      {{ if .url }}</a>{{ else }}</span>{{ end }}
+    </li>
+    {{ end }}
+  </ul>
+</section>
+
 {{ end }}

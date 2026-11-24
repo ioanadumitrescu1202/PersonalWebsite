@@ -1,0 +1,59 @@
+{{ define "main" }}
+<main class="page-content exhibitions-page">
+  <p class="back"><a href="{{ "/" | relURL }}">← Back to main page</a></p>
+  <h1 class="reveal">{{ .Title }}</h1>
+  {{ with .Params.intro }}<p class="research-intro reveal">{{ . }}</p>{{ end }}
+
+  {{ range .Params.items }}
+  <article class="exh reveal">
+    <div class="exh-img arch">
+      <div class="exh-img-inner" data-parallax><div class="exh-img-bg"{{ with .image }} style="background-image:url('{{ . | relURL }}')"{{ end }}></div></div>
+      <i class="exh-star" data-spin aria-hidden="true"></i>
+    </div>
+    <div class="exh-bar">
+      <div class="exh-left">
+        <span class="exh-date">{{ .date }}</span>
+        <h2>{{ .title }}</h2>
+        {{ with .venue }}<small>{{ . }}</small>{{ end }}
+      </div>
+      <div class="exh-right">
+        <p>{{ .details }}</p>
+        {{ if .url }}<a class="exh-go" href="{{ .url }}" aria-label="{{ .link_label | default "Read more" }}"><span>{{ .link_label | default "Read more" }}</span><i>→</i></a>{{ end }}
+      </div>
+    </div>
+  </article>
+  {{ end }}
+</main>
+<script>
+(function () {
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var els = document.querySelectorAll('.reveal');
+  if (reduce || !('IntersectionObserver' in window)) { els.forEach(function (e) { e.classList.add('in'); }); return; }
+  document.documentElement.classList.add('js-reveal');
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+  }, { threshold: 0.15 });
+  els.forEach(function (e) { io.observe(e); });
+
+  // scroll-linked depth: image, bar and star each move at their own speed
+  var items = Array.prototype.slice.call(document.querySelectorAll('.exh')).map(function (ex) {
+    return { ex: ex, img: ex.querySelector('[data-parallax]'), bar: ex.querySelector('.exh-bar'), star: ex.querySelector('[data-spin]') };
+  });
+  var ticking = false;
+  function update() {
+    var vh = window.innerHeight;
+    items.forEach(function (it) {
+      var r = it.ex.getBoundingClientRect();
+      var d = (r.top + r.height / 2 - vh / 2) / vh;      // about -1 .. 1, 0 when centred on screen
+      it.img.style.transform = 'translateY(' + (d * -44).toFixed(1) + 'px)';
+      it.bar.style.transform = 'translateY(' + (d * 30).toFixed(1) + 'px)';
+      it.star.style.transform = 'rotate(' + (d * -260).toFixed(1) + 'deg)';
+    });
+    ticking = false;
+  }
+  window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+  window.addEventListener('resize', update);
+  update();
+})();
+</script>
+{{ end }}

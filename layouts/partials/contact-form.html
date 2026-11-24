@@ -1,0 +1,34 @@
+<form class="contact-form" action="https://api.web3forms.com/submit" method="POST" data-contact-form>
+  <input type="hidden" name="access_key" value="{{ site.Params.formKey }}">
+  <input type="hidden" name="subject" value="New message from your website ({{ . }})">
+  <input type="hidden" name="from_name" value="Website contact form">
+  <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+  <div class="form-row">
+    <label>First name <input type="text" name="first_name" required autocomplete="given-name"></label>
+    <label>Last name <input type="text" name="last_name" required autocomplete="family-name"></label>
+  </div>
+  <label>Email <input type="email" name="email" required autocomplete="email"></label>
+  <label><span>Phone <span class="opt">(optional)</span></span> <input type="tel" name="phone" autocomplete="tel"></label>
+  <label>Message <textarea name="message" rows="6" required></textarea></label>
+  <button type="submit" class="outline-button">Send message</button>
+  <p class="form-status" role="status" aria-live="polite"></p>
+</form>
+<script>
+(function () {
+  document.querySelectorAll('[data-contact-form]').forEach(function (form) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var status = form.querySelector('.form-status'), btn = form.querySelector('button');
+      btn.disabled = true; status.textContent = 'Sending…';
+      fetch(form.action, { method: 'POST', headers: { Accept: 'application/json' }, body: new FormData(form) })
+        .then(function (r) { return r.json(); })
+        .then(function (j) {
+          if (j.success) { form.reset(); status.textContent = 'Thank you, your message has been sent.'; }
+          else { status.textContent = 'Sorry, something went wrong. Please try again.'; }
+        })
+        .catch(function () { status.textContent = 'Sorry, something went wrong. Please try again.'; })
+        .then(function () { btn.disabled = false; });
+    });
+  });
+})();
+</script>

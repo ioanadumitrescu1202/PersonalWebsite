@@ -1,8 +1,6 @@
 ---
 title: "Education"
-menu:
-  main:
-    weight: 20
+draft: true
 ---
 
 ### MA Art History, Curatorship and Renaissance Culture, [Warburg Institute](https://warburg.sas.ac.uk)

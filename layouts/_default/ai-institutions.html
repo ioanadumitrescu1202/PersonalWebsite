@@ -1,0 +1,44 @@
+{{ define "main" }}
+<div class="ai-page">
+  <section class="ai-hero">
+    <div class="ai-hero-img img-left frame-slot" role="img" aria-label="Image placeholder"></div>
+    <div class="ai-hero-img img-right frame-slot" role="img" aria-label="Image placeholder"></div>
+    <div class="ai-hero-text">
+      <h1>{{ .Params.headline }}</h1>
+      <p>{{ .Params.intro }}</p>
+      <a class="outline-button" href="#get-in-touch">{{ .Params.button }}</a>
+    </div>
+  </section>
+
+  <section class="ai-band"><p>{{ .Params.tagline }}</p></section>
+
+  <section class="ai-services">
+    <h2>{{ .Params.services_title }}</h2>
+    <div class="ai-service-grid">
+      {{ range .Params.services }}
+      <article>
+        <div class="service-img frame-slot" role="img" aria-label="Image placeholder"></div>
+        <h3>{{ .title }}</h3>
+        <p>{{ .text }}</p>
+        <a class="outline-button" href="{{ if or (hasPrefix .url "http") (hasPrefix .url "#") }}{{ .url }}{{ else }}{{ .url | relURL }}{{ end }}">{{ .button }}</a>
+      </article>
+      {{ end }}
+    </div>
+  </section>
+
+  <section class="ai-about">
+    <div class="ai-about-text">
+      <h2>{{ .Params.about_title }}</h2>
+      <p>{{ .Params.about_text }}</p>
+      <a class="outline-button" href="{{ "about/" | relURL }}">{{ .Params.about_button }}</a>
+    </div>
+    <div class="ai-about-img frame-slot" role="img" aria-label="Image placeholder"></div>
+  </section>
+
+  <section class="ai-contact" id="get-in-touch">
+    <h2>{{ .Params.contact_title }}</h2>
+    <p>{{ .Params.contact_text }}</p>
+    {{ partial "contact-form.html" "AI for Institutions" }}
+  </section>
+</div>
+{{ end }}

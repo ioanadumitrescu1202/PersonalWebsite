@@ -1,0 +1,19 @@
+{{ define "main" }}
+<main class="page-content research-page">
+  <p class="back"><a href="{{ "/" | relURL }}">← Back to main page</a></p>
+  <h1>{{ .Title }}</h1>
+  {{ with .Params.intro }}<p class="research-intro">{{ . }}</p>{{ end }}
+  <ul class="research-list">
+    {{ range .Params.items }}
+    <li>
+      <span class="status status-{{ .status | urlize }}">{{ .status }}</span>
+      <h2>{{ .title }}</h2>
+      <small>{{ .meta }}</small>
+      <p>{{ .text }}</p>
+      {{ if .url }}<a href="{{ .url }}">{{ .link_label | default "Read online" }} →</a>{{ end }}
+    </li>
+    {{ end }}
+  </ul>
+  {{ .Content }}
+</main>
+{{ end }}

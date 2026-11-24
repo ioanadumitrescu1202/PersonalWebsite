@@ -1,0 +1,9 @@
+{{ define "main" }}
+<main class="page-content contact-page">
+  <p class="back"><a href="{{ "/" | relURL }}">← Back to main page</a></p>
+  <h1>{{ .Params.heading | default .Title }}</h1>
+  <p class="research-intro">{{ .Params.intro }}</p>
+  {{ partial "contact-form.html" "Contact page" }}
+  {{ with .Params.email }}<p class="direct-mail">You can also reach me directly at <a href="mailto:{{ . }}">{{ . }}</a></p>{{ end }}
+</main>
+{{ end }}

@@ -1,8 +1,6 @@
 ---
 title: "Skills and Languages"
-menu:
-  main:
-    weight: 50
+draft: true
 ---
 
 ## Skills
