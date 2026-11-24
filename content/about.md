@@ -7,7 +7,7 @@ menu:
 
 ## Professional profile
 
-Art historian with experience in exhibitions, cultural events, archival research, visitor services and hospitality. Develops independent arts and culture projects, with skills in project coordination, editorial production, digital tools and international outreach.
+Art historian with experience in exhibitions, cultural events, archival research, visitor services and hospitality. Develops independent arts and culture projects, with skills in project coordination, editorial production, digital tools and international outreach. Researches how AI-assisted methods can solve practical curatorial problems, such as exhibition planning and structuring art-historical sources.
 
 ## Education
 

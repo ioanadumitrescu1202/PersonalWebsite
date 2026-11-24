@@ -1,9 +1,10 @@
 ---
 title: "AI for Institutions"
 layout: "ai-institutions"
-menu:
-  main:
-    weight: 40
+# Hidden from the menu until ready to promote. To show it again, restore:
+# menu:
+#   main:
+#     weight: 40
 headline: "AI for galleries, museums and cultural institutions"
 intro: "Practical AI integration shaped by an art historian's understanding of collections, exhibitions and visitors."
 button: "Get in touch"

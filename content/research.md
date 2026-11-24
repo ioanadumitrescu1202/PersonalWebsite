@@ -5,7 +5,7 @@ menu:
   main:
     name: "Research"
     weight: 20
-intro: "A short line about your research interests goes here."
+intro: "My research asks how digital and AI-assisted methods can help solve practical curatorial problems, from exhibition preparation to making art-historical sources searchable, while staying grounded in close looking and archival work."
 # To add an item, copy one block. Status can be: Published, No longer online, or Upcoming.
 # Leave "url" empty for anything that is not online.
 items:
