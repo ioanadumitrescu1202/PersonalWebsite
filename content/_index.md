@@ -2,7 +2,7 @@
 title: "Home"
 kicker: "Art historian · Curator · Zürich"
 heading: "Ioana Dumitrescu"
-intro: "Hi, I'm Ioana. I'm an art historian working as an independent researcher in Zürich. I give AI models art-historical problems and study what comes back. When I'm not doing that, I help plan exhibitions, from digging through archives to working out the hang. Outside work, you'll find me with a black coffee (usually my fifth), a cocktail shaker or a book."
+intro: "Hi, I'm Ioana. I'm an art historian working as an independent researcher in Zürich. I give AI models art-historical problems and study what comes back. When I'm not doing that, I help plan exhibitions, from digging through archives to working out the hang. Outside work, you'll find me with a black coffee (usually my fifth), a cocktail shaker or a book. If you'd like to chat about any of it, get in touch."
 projects_title: "Current Projects"
 projects_text: "What I am working on right now."
 projects_button: "All projects"
