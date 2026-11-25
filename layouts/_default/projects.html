@@ -53,18 +53,15 @@
         reveals[i] = len + Math.PI * r / 2;
         A(r, 1, s.L + r, s.T);
         if (i === 0) {
-          dots.push({ x: s.L + 0.8 * (s.R - s.L), y: s.T, at: len + (s.L + 0.8 * (s.R - s.L)) - (s.L + r) });
           Lt(s.R, s.T);
         } else {
           var u = g[i - 1], ur = (u.B - u.T) / 2;
-          dots.push({ x: s.R, y: s.T, at: len + (s.R - (s.L + r)) });
           Lt(u.R - ur, s.T);
         }
       } else {                                 // curves on the right
         if (i === n - 1) { M(s.L, s.B); Lt(s.R - r, s.B); }
         reveals[i] = len + Math.PI * r / 2;
         A(r, 0, s.R - r, s.T);
-        dots.push({ x: s.L, y: s.T, at: len + (s.R - r - s.L) });
         if (i === 0) { Lt(s.L, s.T); }
         else { var v = g[i - 1], vr = (v.B - v.T) / 2; Lt(v.L + vr, s.T); }
       }
@@ -78,12 +75,6 @@
     line.setAttribute('class', 'path-line');
     line.style.strokeDasharray = total;
     svg.appendChild(line);
-    dots.forEach(function (p) {
-      var el = document.createElementNS(NS, 'circle');
-      el.setAttribute('cx', p.x); el.setAttribute('cy', p.y); el.setAttribute('r', 4.5);
-      el.setAttribute('class', 'path-dot');
-      p.el = el; svg.appendChild(el);
-    });
     wrap.appendChild(svg);
     render();
   }
@@ -115,21 +106,37 @@
   function render() {
     if (!svg) return;
     var drawn = progress * total;
-    line.style.strokeDashoffset = drawn - total;   // draws from the top (end of path) downwards
-    dots.forEach(function (p) { p.el.style.opacity = drawn >= total - p.at ? 1 : 0; });
-    steps.forEach(function (s, i) { if (drawn >= total - reveals[i]) s.classList.add('in'); });
+    line.style.strokeDashoffset = total - drawn;
+    dots.forEach(function (p) { p.el.style.opacity = drawn >= p.at ? 1 : 0; });
+    steps.forEach(function (s, i) { if (drawn >= reveals[i]) s.classList.add('in'); });
+  }
+
+  // Where the line crosses the bottom edge of the screen: it is already drawn below
+  // that point, and snakes up from there, so the animation is visible on load.
+  function startFraction() {
+    var c = wrap.getBoundingClientRect(), vb = window.innerHeight - c.top;
+    if (!line || vb >= c.height) return 0;
+    var lo = 0, hi = total;
+    for (var k = 0; k < 24; k++) {
+      var mid = (lo + hi) / 2;
+      if (line.getPointAtLength(mid).y > vb) lo = mid; else hi = mid;
+    }
+    return hi / total;
   }
 
   function run() {
     if (started) return; started = true;
     if (reduce) { progress = 1; done = true; render(); return; }
-    var dur = Math.min(Math.max(total / 650, 3), 6) * 1000, t0 = null;
+    var from = startFraction();
+    var full = Math.min(Math.max(total / 650, 3), 6) * 1000;
+    var dur = Math.max(full * (1 - from), 1500), t0 = null;
     function frame(t) {
       if (t0 === null) t0 = t;
-      progress = Math.min((t - t0) / dur, 1);
+      progress = from + (1 - from) * Math.min((t - t0) / dur, 1);
       render();
       if (progress < 1) requestAnimationFrame(frame); else done = true;
     }
+    progress = from; render();
     requestAnimationFrame(frame);
   }
 
