@@ -1,6 +1,6 @@
 {{ define "main" }}
 <main class="page-content">
-  <p class="back"><a href="{{ "/" | relURL }}">← Back to main page</a></p>
+  <p class="back"><a href="{{ .Site.Home.RelPermalink }}">← Back to main page</a></p>
   <h1>{{ .Title }}</h1>
   {{ .Content }}
 </main>
