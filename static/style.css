@@ -317,25 +317,27 @@ a.social-card:hover { border-color: var(--gold-soft); transform: translateY(-4px
 .social-card i { position: absolute; left: 1.6rem; bottom: 1.2rem; font-style: normal; width: 2rem; height: 2rem; display: grid; place-items: center; border-radius: 50%; background: var(--gold-soft); color: var(--bg); }
 .social-card.is-pending i { opacity: .35; }
 
-/* Work experience timeline (About) */
-.timeline { position: relative; margin: 2.2rem 0 1rem; }
-.timeline::before { content: ""; position: absolute; left: 6px; top: .6rem; bottom: 0; width: 2px; background: var(--line); }
-.job { position: relative; display: grid; grid-template-columns: 10rem minmax(0, 1fr); column-gap: 2rem; padding: 0 0 2.8rem 2.4rem; }
-.job::before { content: ""; position: absolute; left: 0; top: .55rem; width: 14px; height: 14px; box-sizing: border-box; border-radius: 50%; border: 2px solid var(--text); background: var(--bg); }
-.job.current::before { background: var(--gold-soft); border-color: var(--gold-soft); box-shadow: 0 0 0 5px rgba(201,154,74,.18); }
-.page-content .job .job-date { margin: .55rem 0 0; font-size: .8rem; letter-spacing: .08em; color: var(--muted); }
-.page-content .job .job-title { margin: 0; font-size: 1.5rem; line-height: 1.25; }
-.job-role { font-family: var(--sans); font-size: .95rem; font-weight: 300; color: var(--muted); letter-spacing: .02em; }
-.page-content .job .job-meta { margin: .25rem 0 .6rem; font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; color: var(--gold-soft); }
+/* Education and work entries (About), LinkedIn-style: logo left, details right */
+.timeline { margin: 1.6rem 0 1rem; border-top: 1px solid var(--line); }
+.job { display: grid; grid-template-columns: 4rem minmax(0, 1fr); column-gap: 1.4rem; padding: 1.6rem 0; border-bottom: 1px solid var(--line); }
+.job-logo { position: relative; width: 4rem; height: 4rem; border-radius: 6px; overflow: hidden; background: var(--greige); display: grid; place-items: center; }
+.job-mono { font-family: var(--serif, Georgia, serif); font-size: 1.7rem; color: var(--navy); }
+.job-logo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; background: #fff; padding: 6px; box-sizing: border-box; }
+.page-content .job .job-title { margin: 0; font-size: 1.3rem; line-height: 1.25; }
+.page-content .job .job-role { margin: .2rem 0 0; font-size: 1rem; color: var(--text); }
+.page-content .job .job-date { margin: .25rem 0 0; font-size: .9rem; color: var(--muted); }
+.page-content .job .job-meta { margin: .15rem 0 0; font-size: .9rem; color: var(--muted); }
+.job-body { margin-top: .9rem; }
 .job-body > :first-child { margin-top: 0; }
-.job-body h4:first-child { margin-top: .4rem; }
+.job-body h4 { font-size: 1rem; margin: 1.2rem 0 .1rem; }
+.job-body h4:first-child { margin-top: 0; }
 .job-body ul { margin-top: .5rem; }
+.job-title a { color: var(--text); text-decoration: none; }
+.job-title a:hover { color: var(--gold-soft); text-decoration: underline; text-decoration-color: var(--gold-soft); }
 @media (max-width: 700px) {
-  .job { grid-template-columns: 1fr; padding-left: 2rem; }
-  .page-content .job .job-date { margin: 0 0 .3rem; order: -1; }
+  .job { grid-template-columns: 3rem minmax(0, 1fr); column-gap: 1rem; }
+  .job-logo { width: 3rem; height: 3rem; }
 }
-.job-title a { color: var(--text); text-decoration-color: var(--gold-soft); text-decoration-thickness: 1px; }
-.job-title a:hover { color: var(--gold-soft); }
 
 /* Project status label (Projects page): sits under the star */
 .badge { position: absolute; z-index: 6; top: calc(50% + 3.4rem); transform: translateX(-50%); font-size: .62rem; letter-spacing: .2em; text-transform: uppercase; line-height: 1; padding: .45rem .9rem; border: 1px solid var(--gold-soft); border-radius: 999px; color: var(--gold-soft); background: var(--bg); white-space: nowrap; }

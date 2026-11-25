@@ -11,16 +11,16 @@ Art historian with experience in exhibitions, cultural events, archival research
 
 ## Education
 
-### MA Art History, Curatorship and Renaissance Culture, [Warburg Institute](https://warburg.sas.ac.uk/study-us/ma-art-history-curatorship-renaissance-culture)
-*Sep 2020 – Nov 2022 · London*
-
+{{< timeline >}}
+{{< job date="2020 – 2022" org="Warburg Institute, University of London" url="https://warburg.sas.ac.uk/study-us/ma-art-history-curatorship-renaissance-culture" role="MA Art History, Curatorship and Renaissance Culture" meta="London, UK" >}}
 - MA thesis researched Botticelli's use and reinterpretation of antique architectural forms in five Adoration of the Magi paintings.
+{{< /job >}}
 
-### BA Art History, [University of York](https://www.york.ac.uk/study/undergraduate/courses/ba-history-of-art/)
-*Sep 2017 – Jul 2020 · York*
-
+{{< job date="2017 – 2020" org="University of York" url="https://www.york.ac.uk/study/undergraduate/courses/ba-history-of-art/" role="BA Art History" meta="York, UK" >}}
 - Specialised in Renaissance period art, history of art theory and curatorship.
 - Final thesis researched Roland Hill's twentieth-century political reinterpretation of Hogarth's Marriage à la Mode. [Read the thesis](#) <!-- replace # with the ResearchGate or Academia link -->
+{{< /job >}}
+{{< /timeline >}}
 
 ## Work experience
 

@@ -142,9 +142,10 @@
   setup();
   var resizeTimer;
   window.addEventListener('resize', function () { clearTimeout(resizeTimer); resizeTimer = setTimeout(setup, 150); });
-  if ('IntersectionObserver' in window) {
-    new IntersectionObserver(function (e, o) { if (e[0].isIntersecting) { o.disconnect(); run(); } }, { threshold: 0.1 }).observe(path);
-  } else { run(); }
+  // Start drawing as soon as the page has loaded (no scroll needed).
+  function start() { setup(); run(); }
+  if (document.readyState === 'complete') start();
+  else window.addEventListener('load', start);
 })();
 </script>
 {{ end }}
