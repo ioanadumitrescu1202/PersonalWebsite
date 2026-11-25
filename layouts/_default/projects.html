@@ -115,9 +115,9 @@
   function render() {
     if (!svg) return;
     var drawn = progress * total;
-    line.style.strokeDashoffset = total - drawn;
-    dots.forEach(function (p) { p.el.style.opacity = drawn >= p.at ? 1 : 0; });
-    steps.forEach(function (s, i) { if (drawn >= reveals[i]) s.classList.add('in'); });
+    line.style.strokeDashoffset = drawn - total;   // draws from the top (end of path) downwards
+    dots.forEach(function (p) { p.el.style.opacity = drawn >= total - p.at ? 1 : 0; });
+    steps.forEach(function (s, i) { if (drawn >= total - reveals[i]) s.classList.add('in'); });
   }
 
   function run() {
