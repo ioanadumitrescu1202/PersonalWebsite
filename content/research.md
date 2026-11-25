@@ -5,7 +5,7 @@ menu:
   main:
     name: "Research"
     weight: 20
-intro: "My research asks how digital and AI-assisted methods can help solve practical curatorial problems, from exhibition preparation to making art-historical sources searchable, while staying grounded in close looking and archival work."
+intro: "I study what happens when AI models are given art-historical problems. I treat their outputs as material for analysis, not as answers. Alongside this, I test the same approach on exhibition planning. The work stays rooted in close looking and archival research."
 # To add an item, copy one block. Status can be: Published, No longer online, or Upcoming.
 # Leave "url" empty for anything that is not online.
 items:

@@ -7,7 +7,7 @@ menu:
 
 ## Professional profile
 
-Art historian researching how AI-assisted methods can address problems in art history and curating, from extracting and structuring textual sources to planning exhibitions. My background is in exhibitions, cultural events, archival research and visitor services. I work with independent arts and culture projects on coordination, editorial production, digital tools and international outreach.
+Art historian testing how AI models handle art-historical and curatorial problems, from source analysis to exhibition planning. My background is in exhibitions, cultural events, archival research and visitor services. I work with independent arts and culture projects on coordination, editorial production, digital tools and international outreach.
 
 ## Education
 
