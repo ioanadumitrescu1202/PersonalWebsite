@@ -13,12 +13,13 @@ Art historian testing how AI models handle art-historical and curatorial problem
 
 {{< timeline >}}
 {{< job date="2020 – 2022" org="Warburg Institute, University of London" url="https://warburg.sas.ac.uk/study-us/ma-art-history-curatorship-renaissance-culture" role="MA Art History, Curatorship and Renaissance Culture" meta="London, UK" >}}
-- MA thesis researched Botticelli's use and reinterpretation of antique architectural forms in five Adoration of the Magi paintings.
+MA thesis researched Botticelli's use and reinterpretation of antique architectural forms in five Adoration of the Magi paintings.
 {{< /job >}}
 
 {{< job date="2017 – 2020" org="University of York" url="https://www.york.ac.uk/study/undergraduate/courses/ba-history-of-art/" role="BA Art History" meta="York, UK" >}}
-- Specialised in Renaissance period art, history of art theory and curatorship.
-- Final thesis researched Roland Hill's twentieth-century political reinterpretation of Hogarth's Marriage à la Mode. [Read the thesis](#) <!-- replace # with the ResearchGate or Academia link -->
+Specialised in Renaissance period art, history of art theory and curatorship.
+
+Final thesis researched Roland Hill's twentieth-century political reinterpretation of Hogarth's Marriage à la Mode. [Read the thesis](#) <!-- replace # with the ResearchGate or Academia link -->
 {{< /job >}}
 {{< /timeline >}}
 
@@ -26,12 +27,12 @@ Art historian testing how AI models handle art-historical and curatorial problem
 
 {{< timeline >}}
 {{< job date="May 2026 – Present" org="Room for Art" url="https://roomforart.ch" meta="Switzerland · Self-employed" >}}
-#### Founder & Product Developer, Stealth project
+#### Product Developer, Stealth project
 *Aug 2026 – Present*
 
 - Developing a new project; details to be announced.
 
-#### Founder & Museum Guide, Private Art Tours
+#### Freelance Museum Guide
 *May – Sep 2026*
 
 - Researched and delivered guided museum visits for tourists.
@@ -41,7 +42,7 @@ Art historian testing how AI models handle art-historical and curatorial problem
 {{< /job >}}
 
 <!-- replace # with the Dispatch website link -->
-{{< job date="Jan 2026 – Present" org="Arts and Culture Jobs Dispatch" url="#" role="Editor & Publisher" meta="Project-based" >}}
+{{< job date="Jan 2026 – Present" org="Arts and Culture Jobs Dispatch" url="#" role="Editor & Publisher" meta="Zürich, Switzerland · Project-based" >}}
 - Created and launched a Substack publication of Swiss arts and culture vacancies and practical career guidance; currently beta testing the concept and assessing demand.
 - Established an AI-assisted process to collect vacancies from approximately 100 employer websites and organise them for publication.
 - Write regular columns on finding employment and navigating careers in arts and culture.

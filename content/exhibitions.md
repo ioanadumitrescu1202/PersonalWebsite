@@ -4,7 +4,7 @@ layout: "exhibitions"
 menu:
   main:
     weight: 35
-intro: "Exhibitions I worked on as Assistant Curator at Elite Art Gallery, Bucharest (November 2022 – July 2023)."
+intro: "Exhibitions I worked on at Elite Art Gallery, Bucharest, as Gallerist and Assistant Curator (September 2022 – July 2023)."
 # To add an exhibition, copy one block. They are shown in the order listed (newest first).
 # "image" is optional: a web address, or a file in static/images/ written as images/your-file.jpg.
 items:
@@ -71,6 +71,18 @@ items:
     date: "8 November – 3 December 2022"
     venue: "Elite Art Gallery · Bucharest"
     details: "George Țipoia: reliefs and oil paintings on canvas and parchment, a tribute to his father, the painter Alexandru Țipoia, with the Cross, the Sarcophagus and Wings as recurring themes."
+    url: "https://www.eliteart-gallery.com/expozitii-elite-art-gallery-2022/"
+    link_label: "Exhibition page"
+  - title: "E L E G I I"
+    date: "4 October – 3 November 2022"
+    venue: "Elite Art Gallery · Bucharest"
+    details: "Painting, drawing and sculpture by Doina Mihăilescu and Radu Feldiorean, curated by the art critic Oliv Mircea: geometric rhythm and essentialised forms on the sacred and the divine."
+    url: "https://www.eliteart-gallery.com/expozitii-elite-art-gallery-2022/"
+    link_label: "Exhibition page"
+  - title: "Balchik Art Residency"
+    date: "30 August – 28 September 2022"
+    venue: "Elite Art Gallery · Bucharest"
+    details: "Eight artists, among them Alexandru Manea, Ramona Ursache and Ana-Maria Ștefan, show contemporary painting made during the creative camp on the Black Sea coast, developed with the Bucharest City Hall through ARCUB."
     url: "https://www.eliteart-gallery.com/expozitii-elite-art-gallery-2022/"
     link_label: "Exhibition page"
 ---

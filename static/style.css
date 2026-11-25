@@ -33,11 +33,11 @@
   --display: 'Italiana', 'Cormorant Garamond', serif;
   --script: 'Pinyon Script', cursive;
   --sans: 'Jost', 'Helvetica Neue', Arial, sans-serif;
-  --side: 6vw;
+  --side: 4vw;
 }
 
 * { box-sizing: border-box; }
-html { background: var(--bg); }
+html { background: var(--bg); font-size: calc(100% + 1pt); }
 body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--sans); font-weight: 300; font-size: 1.05rem; line-height: 1.7; }
 a { color: var(--gold-soft); text-underline-offset: 3px; }
 a:hover { color: var(--text); }
@@ -95,7 +95,7 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 500; }
 .host-text p { font-size: 0.92rem; margin: 0 0 1.4rem; max-width: 24rem; }
 
 /* CV */
-.cv { padding: 4rem var(--side) 2rem; max-width: 1000px; margin: 0 auto; border-top: 1px solid var(--line); }
+.cv { padding: 4rem var(--side) 2rem; max-width: 1200px; margin: 0 auto; border-top: 1px solid var(--line); }
 .cv h1 { display: none; }
 .cv h2, .page-content h2 { font-size: 1.8rem; margin: 3rem 0 0.8rem; padding-bottom: 0.4rem; border-bottom: 1px solid var(--line); }
 .cv h2:first-child { margin-top: 0; }
@@ -112,7 +112,7 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 500; }
 .cv h4 + p em, .page-content h4 + p em { font-style: normal; }
 
 /* Inner pages */
-.page-content { padding: 3rem var(--side) 2rem; max-width: 1000px; margin: 0 auto; }
+.page-content { padding: 3rem var(--side) 2rem; max-width: 1200px; margin: 0 auto; }
 .page-content h1 { font-family: var(--display); font-weight: 400; text-transform: uppercase; letter-spacing: .04em; font-size: clamp(2.4rem, 5vw, 3.6rem); margin: 0.6rem 0 1.2rem; }
 .back { font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase; margin: 0; }
 .back a { color: var(--muted); text-decoration: none; }
@@ -123,7 +123,7 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 500; }
 /* Phones and narrow windows */
 
 /* Projects page: winding path */
-.projects-page { max-width: 62rem; text-align: center; }
+.projects-page { max-width: 70rem; text-align: center; }
 .projects-page .back { text-align: left; }
 .projects-page h1 { margin-bottom: 4rem; letter-spacing: .2em; }
 .script-sub { font-family: var(--script); font-size: clamp(1.8rem, 4vw, 3rem); line-height: 1.2; margin: 0 0 5rem; }
@@ -215,7 +215,7 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 500; }
 @media (prefers-reduced-motion: reduce) { .path.enhanced .step { transition: none; } }
 
 /* Research and publications */
-.research-page { max-width: 52rem; }
+.research-page { max-width: 58rem; }
 .page-content .research-intro { text-align: center; max-width: 34rem; margin: 0 auto 3.5rem; color: var(--muted); }
 .research-page h1 { text-align: center; line-height: 1.15; margin-bottom: 1.5rem; }
 .research-list { list-style: none; padding: 0; margin: 0; }
@@ -386,3 +386,26 @@ a.social-card:hover { border-color: var(--gold-soft); transform: translateY(-4px
   .projects-page .step p { font-size: .95rem; }
   .projects-page h1 { margin-bottom: 2.5rem; }
 }
+
+/* Projects (desktop): the star sits on the snaking line, at the outermost point of each curve, as on phones */
+@media (min-width: 861px) {
+  .projects-page .step .num { z-index: 5; }
+  .projects-page .step:nth-child(odd) .num, .projects-page .step:first-child .num { right: auto; left: 0; transform: translate(-50%, -50%); }
+  .projects-page .step:nth-child(even) .num { left: auto; right: 0; transform: translate(50%, -50%); }
+  .projects-page .step:nth-child(odd) .badge, .projects-page .step:first-child .badge { right: auto; left: 0; transform: translateX(-50%); }
+  .projects-page .step:nth-child(even) .badge { left: auto; right: 0; transform: translateX(50%); }
+  .projects-page .step:nth-child(odd) { padding: 2.5rem 4rem 2.5rem 6.5rem; }
+  .projects-page .step:nth-child(even) { padding: 2.5rem 6.5rem 2.5rem 4rem; }
+  .projects-page .step:first-child { padding-right: 3rem; }
+}
+
+/* Consistent entry typography: org, ROLE in clean capitals, then date · location */
+.page-content .job .job-role, .page-content .job .job-body h4 { font-family: var(--sans); font-size: .95rem; font-weight: 300; letter-spacing: .14em; text-transform: uppercase; color: var(--text); line-height: 1.4; }
+.page-content .job .job-role { margin: .25rem 0 0; }
+.page-content .job .job-body h4 { margin: 1.4rem 0 0; }
+.page-content .job .job-body h4:first-child { margin-top: 0; }
+.page-content .job .job-body h4 a { color: inherit; text-decoration: none; }
+.page-content .job .job-body h4 a:hover { color: var(--gold-soft); }
+.page-content .job .job-date, .page-content .job .job-body h4 + p { font-size: .9rem; letter-spacing: normal; text-transform: none; color: var(--muted); margin: .2rem 0 .5rem; }
+.page-content .job .job-body h4 + p em { font-style: normal; }
+.page-content .job .job-body > p:not(h4 + p) { margin: .3rem 0 .6rem; }

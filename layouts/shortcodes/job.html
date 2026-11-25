@@ -8,8 +8,7 @@
   <div class="job-main">
     <h3 class="job-title">{{ if .Get "url" }}<a href="{{ .Get "url" }}">{{ $org }}</a>{{ else }}{{ $org }}{{ end }}</h3>
     {{ with .Get "role" }}<p class="job-role">{{ . }}</p>{{ end }}
-    <p class="job-date">{{ $date }}</p>
-    {{ with .Get "meta" }}<p class="job-meta">{{ . }}</p>{{ end }}
+    <p class="job-date">{{ $date }}{{ with .Get "meta" }} · {{ . }}{{ end }}</p>
     <div class="job-body">{{ .Inner | markdownify }}</div>
   </div>
 </article>
